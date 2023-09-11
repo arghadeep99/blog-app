@@ -26,4 +26,27 @@ class Blog extends Model
         $this->attributes['title'] = $value;
         $this->attributes['slug'] = Str::slug($value);
     }
+
+    public function getUrlAttribute()
+    {
+        return route("blogs.show", $this->slug);
+    }
+
+    public function getCreatedDateAttribute()
+    {
+        return $this->created_at->diffForHumans();
+    }
+
+
+    public function getBySlug($slug)
+    {
+        return Blog::where('slug', $slug)->first();
+    }
+
+    public function getRelatedBlog($id, $category)
+    {
+
+        return Blog::where('category', $category)->where('id', '!=', $id)->latest()->limit(3)->get();
+    }
+
 }

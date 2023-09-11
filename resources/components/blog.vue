@@ -1,7 +1,4 @@
-@extends('layouts.app')
-
-@section('content')
-<div class="container">
+<template>
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
@@ -11,21 +8,24 @@
                     @foreach($blogs as $blog)
                         <div class="media">
                             <div class="media-body">
-                                <h3 class="mt-0"><a href="{{ $blog->url }}" class="ancor-no-decoration" >{{ $blog->title }}</a></h3>
-                                <creatorInfo :blog={{ $blog }}></creatorInfo>
-                                {{ \Illuminate\Support\Str::limit($blog->body, 250) }}
+                                <h3 class="mt-0"><a href="/blogs" class="ancor-no-decoration" >{{ title }}</a></h3>
+                                <p class="lead">
+                                    By
+                                    {{ user_name }}
+                                    <small class="text-mutes">{{ created_date }}</small>
+                                </p>
+                                {{ body }}
                             </div>                        
                         </div>
                         <hr>
                     @endforeach
 
                     <div class="">
-                    {{ $blogs->links() }}
+                    {{ links }}
                     </div>    
                 </div>
             </div>
         </div>
         
     </div>
-</div>
-@endsection
+</template>

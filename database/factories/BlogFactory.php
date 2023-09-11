@@ -16,9 +16,11 @@ class BlogFactory extends Factory
 
     public function definition()
     {
+        $categoryArray = ['Food','Travel','Lifestyle','Photography','Health and fitness','Fashion and beauty'];
         return [
-            'title' => rtrim($this->faker->sentence(rand(5, 10)), "."),
-            'body' => $this->faker->paragraphs(rand(3, 7), true),
+            'title' => rtrim($this->faker->sentence(rand(5, 6)), "."),
+            'body' => $this->faker->paragraphs(rand(10, 20), true),
+            'category' => $categoryArray[rand(0, 5)],
         ];
     }
 }

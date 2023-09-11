@@ -46,9 +46,26 @@ class BlogController extends Controller
      * @param  \App\Models\Blog  $blog
      * @return \Illuminate\Http\Response
      */
-    public function show(Blog $blog)
+    public function show(Blog $blog, $slug)
     {
-        //
+       $blog = Blog::getBySlug($slug);
+       
+       if(!$blog)
+       {
+           abort(404);
+       }
+
+       $getRelatedblogs = Blog::getRelatedBlog($blog->id, $blog->category);
+
+       return view('blogs.details', compact(['blog', 'getRelatedblogs']));
+
+    }
+
+    public function my_blogs()
+    {
+        $getUserBlogs = Auth()->user()->blogs();
+
+        print_r($getUserBlogs->title); 
     }
 
     /**

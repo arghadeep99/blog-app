@@ -16,11 +16,17 @@ use App\Http\Controllers\BlogController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect()->route('blogs.index');
 });
+
 
 Auth::routes();
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
-Route::resource('blogs', BlogController::class);
+
+Route::resource('blogs', BlogController::class)->except('show');
+
+Route::get('blogs/my-blogs', [BlogController::class, 'my_blogs'])->name('my-blogs');
+
+Route::get('blogs/{slug}', [BlogController::class, 'show'])->name('blogs.show');
