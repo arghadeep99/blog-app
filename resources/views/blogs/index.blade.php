@@ -12,11 +12,12 @@
                         <div class="media">
                             <div class="media-body">
                                 <h3 class="mt-0"><a href="{{ $blog->url }}" class="ancor-no-decoration" >{{ $blog->title }}</a></h3>
-                                <creatorInfo :blog={{ $blog }}></creatorInfo>
-                                {{ \Illuminate\Support\Str::limit($blog->body, 250) }}
+                                <creator-info :model="{{ $blog }}" :user="{{ $blog->user }}"></creator-info>
+                                {{ \Illuminate\Support\Str::limit($blog->body, 300) }}
                             </div>                        
                         </div>
                         <hr>
+                       
                     @endforeach
 
                     <div class="">

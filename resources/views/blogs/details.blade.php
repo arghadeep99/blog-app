@@ -19,7 +19,7 @@
                     {!! $blog->body !!}
                     <br><br>
                     <div class=" text-float-right">
-                       <creatorInfo :blog={{ $blog }}></creatorInfo>
+                        <creator-info :model="{{ $blog }}" :user="{{ $blog->user }}"></creator-info>
                     </div>
 
                 </div>

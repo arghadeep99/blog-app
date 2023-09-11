@@ -16,6 +16,8 @@ class Blog extends Model
         'title', 'body', 'slug', 'cover_image'
     ];
 
+    protected $appends = ['created_date'];
+
     public function user()
     {
         return $this->belongsTo(User::class);

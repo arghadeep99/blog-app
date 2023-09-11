@@ -1,0 +1,3 @@
+git remote set-url origin https://<token>@github.com/<username>/<repo>
+
+git remote set-url origin https://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@github.com/arghadeep99/blog-app
