@@ -85,6 +85,8 @@ class BlogController extends Controller
      */
     public function edit(Blog $blog)
     {   
+        $this->authorize('update', $blog);
+
         $categoryArray = ['Food','Travel','Lifestyle','Photography','Health and fitness','Fashion and beauty'];
         return view('blogs.edit', compact(['blog', 'categoryArray']));
     }
@@ -97,7 +99,9 @@ class BlogController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(CreateBlogRequest $request, Blog $blog)
-    {
+    {   
+        $this->authorize('update', $blog);
+
         $blog->update($request->only('title', 'category', 'body'));
 
         return redirect('/blogs')->with('success', 'Blog updated successfully!');
@@ -111,6 +115,8 @@ class BlogController extends Controller
      */
     public function destroy(Blog $blog)
     {
+        $this->authorize('delete', $blog);
+
         $blog->delete();
 
         return redirect('/blogs')->with('success', 'The Blog has been removed!');
