@@ -15,6 +15,8 @@
                     @endif
 
                     {{ __('You are logged in!') }}
+
+                    <a href="blogs/my-blogs">Go to My Blogs</a>
                 </div>
             </div>
         </div>

@@ -5,9 +5,19 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header">All Blogs</div>
+            <div class="card-header">
+                    <div class="d-flex align-items-center">
+                        <h2>All Blogs</h2>
+                        <div class="ml-auto">
+                            <a href="{{ route('blogs.create') }}" class="btn btn-outline-secondary">Create Blog</a>
+                        </div>
+                    </div>
+
+                </div>
 
                 <div class="card-body">
+                    @include ('layouts._messages')
+
                     @foreach($blogs as $blog)
                         <div class="media">
                             <div class="media-body">

@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Blog;
 use Illuminate\Http\Request;
 
+use App\Http\Requests\CreateBlogRequest;
+
 class BlogController extends Controller
 {
     /**
@@ -26,7 +28,11 @@ class BlogController extends Controller
      */
     public function create()
     {
-        //
+        $blogs = new Blog();
+
+        $categoryArray = ['Food','Travel','Lifestyle','Photography','Health and fitness','Fashion and beauty'];
+
+        return view('blogs.create', compact(['blogs', 'categoryArray']));
     }
 
     /**
@@ -35,9 +41,11 @@ class BlogController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreateBlogRequest $request)
     {
-        //
+        $request->user()->blogs()->create($request->only('title', 'category', 'body'));
+
+        return redirect()->route('blogs.index')->with('success', "Your blog has been submitted");
     }
 
     /**
@@ -63,9 +71,10 @@ class BlogController extends Controller
 
     public function my_blogs()
     {
-        $getUserBlogs = Auth()->user()->blogs();
-
-        print_r($getUserBlogs->title); 
+        $getLoginUser = Auth()->user();
+        $getBlogs = Blog::getByUserId($getLoginUser->id);
+       
+        return view('blogs.myblogs', compact('getBlogs'));
     }
 
     /**
@@ -75,8 +84,9 @@ class BlogController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit(Blog $blog)
-    {
-        
+    {   
+        $categoryArray = ['Food','Travel','Lifestyle','Photography','Health and fitness','Fashion and beauty'];
+        return view('blogs.edit', compact(['blog', 'categoryArray']));
     }
 
     /**
@@ -86,9 +96,11 @@ class BlogController extends Controller
      * @param  \App\Models\Blog  $blog
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Blog $blog)
+    public function update(CreateBlogRequest $request, Blog $blog)
     {
-        //
+        $blog->update($request->only('title', 'category', 'body'));
+
+        return redirect('/blogs')->with('success', 'Blog updated successfully!');
     }
 
     /**
@@ -99,6 +111,8 @@ class BlogController extends Controller
      */
     public function destroy(Blog $blog)
     {
-        //
+        $blog->delete();
+
+        return redirect('/blogs')->with('success', 'The Blog has been removed!');
     }
 }

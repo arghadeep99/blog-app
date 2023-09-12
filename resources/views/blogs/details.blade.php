@@ -27,28 +27,29 @@
         </div>
 
         <div class="col-md-3">
-            <div class="card">
-                <div class="card-header">
-                    <div class="d-flex align-items-center">
-                        <h2>Related Blog</h2>
-                      
-                    </div>
+        <div class="card">
+            <div class="card-header">
+                <div class="d-flex align-items-center">
+                    <h2>Related Blog</h2>
+                    
                 </div>
-                @forelse($getRelatedblogs as $blogResult)
-                    <div class="card-body">
-                        <div class="card" >
-                            <div class="card-body">
-                                <h4 class="card-title"><a href="{{ $blogResult->url }}" class="ancor-no-decoration" >{{$blogResult->title}}</a></h4>
-                                <p class="card-text">{{\Illuminate\Support\Str::limit($blogResult->body, 100)}}</p>
-                                
-                            </div>
+            </div>
+            @forelse($getRelatedblogs as $blog)
+                <div class="card-body">
+                    <div class="card" >
+                        <div class="card-body">
+                            <h4 class="card-title"><a href="{{ $blog->url }}" class="ancor-no-decoration" >{{ $blog->title }}</a></h4>
+
+                            <p class="card-text">{{ Str::limit($blog->body, 100) }}</p>
+                            
                         </div>
                     </div>
-                @empty
-                    <div class="card-body">No Related Blogs</div>
-                @endforelse
-            </div>
+                </div>
+            @empty
+                <div class="card">No Related Blogs</div>
+            @endforelse
         </div>
+    </div>
         
     </div>
 </div>

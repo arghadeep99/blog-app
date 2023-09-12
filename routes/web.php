@@ -25,8 +25,12 @@ Auth::routes();
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 
-Route::resource('blogs', BlogController::class)->except('show');
+Route::resource('blogs', BlogController::class)->only('index');
 
-Route::get('blogs/my-blogs', [BlogController::class, 'my_blogs'])->name('my-blogs');
+Route::middleware(['auth'])->group(function() {
+    Route::get('blogs/my-blogs', [BlogController::class, 'my_blogs'])->name('my-blogs');
+    Route::resource('blogs', BlogController::class)->except(['index','show']);
+});
+
 
 Route::get('blogs/{slug}', [BlogController::class, 'show'])->name('blogs.show');

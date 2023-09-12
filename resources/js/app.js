@@ -6,6 +6,8 @@
 
 require('./bootstrap');
 
+window.$ = window.jQuery = require('jquery');
+
 window.Vue = require('vue').default;
 
 /**
@@ -20,6 +22,7 @@ window.Vue = require('vue').default;
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
 Vue.component('creator-info', require('./components/creator-info.vue').default);
+
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

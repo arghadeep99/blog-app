@@ -13,10 +13,10 @@ class Blog extends Model
     use HasFactory, SoftDeletes;
 
     protected $fillable = [
-        'title', 'body', 'slug', 'cover_image'
+        'title', 'body', 'slug', 'category', 'cover_image'
     ];
 
-    protected $appends = ['created_date'];
+    protected $appends = ['url', 'created_date'];
 
     public function user()
     {
@@ -47,8 +47,12 @@ class Blog extends Model
 
     public function getRelatedBlog($id, $category)
     {
-
         return Blog::where('category', $category)->where('id', '!=', $id)->latest()->limit(3)->get();
+    }
+
+    public function getByUserId($userId)
+    {
+        return Blog::where('user_id', $userId)->get();
     }
 
 }

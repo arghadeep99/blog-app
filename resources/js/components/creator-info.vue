@@ -1,7 +1,7 @@
 <template>
    <p class="lead">
         By
-         {{ user.name }} 
+         {{ username }} 
         <br>
         <small class="text-muted">{{ created_date }} </small>
     </p>
@@ -15,7 +15,7 @@ export default{
 
     data() {
         return {
-            user : this.user,
+            username : this.user.name,
             created_date: this.model.created_date
         }
     }
