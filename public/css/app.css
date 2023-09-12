@@ -12412,3 +12412,10 @@ textarea.form-control-lg {
 form.form-delete {
   display: inline;
 }
+
+.post {
+  padding: 20px 0;
+}
+.post:not(:last-child) {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
