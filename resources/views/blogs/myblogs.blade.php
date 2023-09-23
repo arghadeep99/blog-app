@@ -13,8 +13,8 @@
 
                 <div class="card-body">
                     
-
-                <table class="table table-striped" id="blog-table">
+                <br>
+                <table class="table table-striped" id="blog_table">
                     <thead class="thead-dark">
                         <tr>
                         <th scope="col">Title</th>
@@ -55,5 +55,11 @@
 </div>
 
 
+
 @endsection
+
+<script> 
+
+ 
+</script>
 

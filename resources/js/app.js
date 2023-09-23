@@ -4,7 +4,13 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 
+global.$ = global.jQuery = require('jquery');
+
 require('./bootstrap');
+
+require('datatables.net-bs4');
+
+
 
 window.$ = window.jQuery = require('jquery');
 
@@ -38,4 +44,10 @@ Vue.component('blog-details', require('./components/blog-details.vue').default);
 
 const app = new Vue({
     el: '#app',
+});
+
+import $ from "jquery";
+
+$(document).ready(function () {
+    $('#blog_table').DataTable();
 });
