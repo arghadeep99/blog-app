@@ -16,7 +16,7 @@ class BlogController extends Controller
      */
     public function index()
     {
-        $blogs = Blog::latest()->paginate(5);
+        $blogs = Blog::with('user')->latest()->get();
 
         return view('blogs.index', compact('blogs'));
     }
@@ -28,11 +28,11 @@ class BlogController extends Controller
      */
     public function create()
     {
-        $blogs = new Blog();
+        $blog = new Blog();
 
         $categoryArray = ['Food','Travel','Lifestyle','Photography','Health and fitness','Fashion and beauty'];
 
-        return view('blogs.create', compact(['blogs', 'categoryArray']));
+        return view('blogs.create', compact(['blog', 'categoryArray']));
     }
 
     /**

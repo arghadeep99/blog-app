@@ -7,19 +7,20 @@
                     
                 </div>
             </div>
-
-            <related-blog v-for="blog in relatedblogs" :blog="blog" :key="blog.id"></related-blog>
+            
+                <div v-if="count" >
+                    <related-blog-item  v-for="blog in getrelatedblogs" :blog="blog" :key="blog.id" ></related-blog-item>
+                </div>
+                <div v-else class="card">No Related Blogs</div>
+               
         </div>
     </div>
 </template>
 
-<script setup>
+<script>
 
 export default {
-
-    props: ['relatedblogs'],
-
-   
-
+    props: ['getrelatedblogs', 'count']
 }
+
 </script>

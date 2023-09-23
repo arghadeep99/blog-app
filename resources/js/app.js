@@ -22,6 +22,12 @@ window.Vue = require('vue').default;
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
 Vue.component('creator-info', require('./components/creator-info.vue').default);
+Vue.component('related-blog-item', require('./components/related-blog-item.vue').default);
+Vue.component('related-blogs', require('./components/related-blogs.vue').default);
+Vue.component('blog', require('./components/blog.vue').default);
+Vue.component('blog-page', require('./components/blog-page.vue').default);
+Vue.component('blog-details', require('./components/blog-details.vue').default);
+
 
 
 /**

@@ -1,8 +1,8 @@
 <template>
-     <div class="card-body">
+    <div class="card-body">
         <div class="card" >
             <div class="card-body">
-                <h4 class="card-title"><a href="{{ url }}" class="ancor-no-decoration" >{{ title }}</a></h4>
+                <h4 class="card-title"><a :href="blog.url" class="ancor-no-decoration" >{{ blog.title }}</a></h4>
 
                 <p class="card-text">{{ body }}</p>
                 
@@ -16,13 +16,13 @@
 export default {
     props: ['blog'],
 
-    data () {
-        return {
-            url: 'bqhssqs',
-            title: 'bqhssqs',
-            body: 'bqhssqs'
+    computed: {
+    
+        body () {
+            return this.blog.body.substring(0,100) + '...';
         }
     }
 
 }
+
 </script>
