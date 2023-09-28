@@ -1,7 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-
 <blog-details :getrelatedblogs="{{ $getRelatedblogs }}" 
               :blog="{{ $blog }}" 
               :userdetails="{{ $blog->user }}" 

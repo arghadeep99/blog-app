@@ -104,6 +104,14 @@ class BlogController extends Controller
 
         $blog->update($request->only('title', 'category', 'body'));
 
+        if($request->expectsJson())
+        {
+            return response()->json([
+                'message'=>'Blog updated successfully!'
+            ]);
+        }
+        
+
         return redirect('/blogs')->with('success', 'Blog updated successfully!');
     }
 

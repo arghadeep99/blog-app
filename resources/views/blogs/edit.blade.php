@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-12">
@@ -15,11 +16,16 @@
 
                 </div>
 
-                <div class="card-body">
+                <!-- <div class="card-body">
                    <form action="{{ route('blogs.update', $blog->id) }}" method="post">
                         {{ method_field('PUT') }}
                        @include('blogs._form', ['buttonText'=>'Save Blog'])
                    </form>
+                </div> -->
+                <?php $categoryArray = json_encode($categoryArray);
+                ?>
+                <div class="card-body">
+                    <edit-form :blog="{{ $blog }}" :categories="{{$categoryArray}}" ></edit-form>
                 </div>
             </div>
         </div>

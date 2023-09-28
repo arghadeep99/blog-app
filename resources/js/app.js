@@ -33,6 +33,7 @@ Vue.component('related-blogs', require('./components/related-blogs.vue').default
 Vue.component('blog', require('./components/blog.vue').default);
 Vue.component('blog-page', require('./components/blog-page.vue').default);
 Vue.component('blog-details', require('./components/blog-details.vue').default);
+Vue.component('edit-form', require('./components/edit-form.vue').default);
 
 
 
