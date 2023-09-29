@@ -34,6 +34,9 @@ Vue.component('blog', require('./components/blog.vue').default);
 Vue.component('blog-page', require('./components/blog-page.vue').default);
 Vue.component('blog-details', require('./components/blog-details.vue').default);
 Vue.component('edit-form', require('./components/edit-form.vue').default);
+Vue.component('add-form', require('./components/add-form.vue').default);
+Vue.component('my-blogs', require('./components/my-blogs.vue').default);
+Vue.component('my-blog-item', require('./components/my-blog-item.vue').default);
 
 
 

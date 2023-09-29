@@ -15,10 +15,17 @@
 
                 </div>
 
-                <div class="card-body">
-                   <form action="{{ route('blogs.store') }}" method="post">
+               <!-- <div class="card-body">
+                <form action="{{ route('blogs.store') }}" method="post">
                        @include('blogs._form', ['buttonText'=>'Create Blog'])
-                   </form>
+                   </form> 
+                </div>-->
+                
+                <?php $categoryArray = json_encode($categoryArray);
+                ?>
+                <div class="card-body">
+                  
+                   <add-form :categories="{{$categoryArray}}" ></add-form>
                 </div>
             </div>
         </div>

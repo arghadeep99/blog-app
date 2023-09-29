@@ -111,7 +111,6 @@ class BlogController extends Controller
             ]);
         }
         
-
         return redirect('/blogs')->with('success', 'Blog updated successfully!');
     }
 
@@ -126,6 +125,13 @@ class BlogController extends Controller
         $this->authorize('delete', $blog);
 
         $blog->delete();
+
+        if (request()->expectsJson())
+        {
+            return response()->json([
+                'message' => "Your answer has been removed"
+            ]);
+        }
 
         return redirect('/blogs')->with('success', 'The Blog has been removed!');
     }
